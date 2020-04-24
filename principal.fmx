@@ -1,0 +1,388 @@
+object FrmPrincipal: TFrmPrincipal
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 632
+  ClientWidth = 401
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnShow = FormShow
+  DesignerMasterStyle = 3
+  object ToolBar1: TToolBar
+    Size.Width = 401.000000000000000000
+    Size.Height = 48.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    object Label1: TLabel
+      Align = Contents
+      Size.Width = 401.000000000000000000
+      Size.Height = 48.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.HorzAlign = Center
+      Text = 'Covid-19'
+      TabOrder = 0
+    end
+    object BtnSobre: TSpeedButton
+      Align = Right
+      Position.X = 353.000000000000000000
+      Size.Width = 48.000000000000000000
+      Size.Height = 48.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'infotoolbutton'
+      Text = 'BtnSobre'
+      OnClick = BtnSobreClick
+    end
+  end
+  object TbcGeral: TTabControl
+    Align = Client
+    Size.Width = 401.000000000000000000
+    Size.Height = 584.000000000000000000
+    Size.PlatformDefault = False
+    TabHeight = 49.000000000000000000
+    TabIndex = 0
+    TabOrder = 1
+    TabPosition = PlatformDefault
+    OnChange = TbcGeralChange
+    Sizes = (
+      401s
+      535s
+      401s
+      535s)
+    object TabMundo: TTabItem
+      CustomIcon = <
+        item
+        end>
+      IsSelected = True
+      Size.Width = 200.000000000000000000
+      Size.Height = 49.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = ''
+      TabOrder = 0
+      Text = 'Mundo'
+      ExplicitSize.cx = 198.000000000000000000
+      ExplicitSize.cy = 49.000000000000000000
+      inline FrameMundo1: TFrameMundo
+        Align = Client
+        Padding.Left = 10.000000000000000000
+        Padding.Top = 5.000000000000000000
+        Padding.Right = 10.000000000000000000
+        Padding.Bottom = 5.000000000000000000
+        Size.Width = 401.000000000000000000
+        Size.Height = 535.000000000000000000
+        Size.PlatformDefault = False
+        inherited LstDadosMundo: TListBox
+          Size.Width = 381.000000000000000000
+          Size.Height = 525.000000000000000000
+          Viewport.Width = 381.000000000000000000
+          Viewport.Height = 525.000000000000000000
+          inherited ListBoxGroupHeader5: TListBoxGroupHeader
+            Size.Width = 381.000000000000000000
+            Size.Height = 30.000000000000000000
+            Size.PlatformDefault = False
+          end
+          inherited ListBoxItem6: TListBoxItem
+            Position.Y = 30.000000000000000000
+            Size.Width = 381.000000000000000000
+            inherited active: TLabel
+              Position.X = 258.000000000000000000
+            end
+          end
+          inherited ListBoxItem7: TListBoxItem
+            Position.Y = 62.000000000000000000
+            Size.Width = 381.000000000000000000
+            inherited critical: TLabel
+              Position.X = 258.000000000000000000
+            end
+          end
+          inherited ListBoxItem5: TListBoxItem
+            Position.Y = 94.000000000000000000
+            Size.Width = 381.000000000000000000
+            inherited recovered: TLabel
+              Position.X = 258.000000000000000000
+            end
+          end
+          inherited ListBoxItem12: TListBoxItem
+            Position.Y = 126.000000000000000000
+            Size.Width = 381.000000000000000000
+            inherited affectedCountries: TLabel
+              Position.X = 258.000000000000000000
+            end
+          end
+          inherited ListBoxGroupHeader3: TListBoxGroupHeader
+            Position.Y = 158.000000000000000000
+            Size.Width = 381.000000000000000000
+            Size.Height = 30.000000000000000000
+            Size.PlatformDefault = False
+          end
+          inherited ListBoxItem1: TListBoxItem
+            Position.Y = 188.000000000000000000
+            Size.Width = 381.000000000000000000
+            inherited cases: TLabel
+              Position.X = 258.000000000000000000
+            end
+          end
+          inherited ListBoxItem2: TListBoxItem
+            Position.Y = 220.000000000000000000
+            Size.Width = 381.000000000000000000
+            inherited todayCases: TLabel
+              Position.X = 258.000000000000000000
+            end
+          end
+          inherited ListBoxItem8: TListBoxItem
+            Position.Y = 252.000000000000000000
+            Size.Width = 381.000000000000000000
+            inherited casesPerOneMillion: TLabel
+              Position.X = 258.000000000000000000
+            end
+          end
+          inherited ListBoxGroupHeader4: TListBoxGroupHeader
+            Position.Y = 284.000000000000000000
+            Size.Width = 381.000000000000000000
+            Size.Height = 30.000000000000000000
+            Size.PlatformDefault = False
+          end
+          inherited ListBoxItem3: TListBoxItem
+            Position.Y = 314.000000000000000000
+            Size.Width = 381.000000000000000000
+            inherited deaths: TLabel
+              Position.X = 258.000000000000000000
+            end
+          end
+          inherited ListBoxItem4: TListBoxItem
+            Position.Y = 346.000000000000000000
+            Size.Width = 381.000000000000000000
+            inherited todayDeaths: TLabel
+              Position.X = 258.000000000000000000
+            end
+          end
+          inherited ListBoxItem9: TListBoxItem
+            Position.Y = 378.000000000000000000
+            Size.Width = 381.000000000000000000
+            inherited deathsPerOneMillion: TLabel
+              Position.X = 258.000000000000000000
+            end
+          end
+          inherited ListBoxGroupHeader2: TListBoxGroupHeader
+            Position.Y = 410.000000000000000000
+            Size.Width = 381.000000000000000000
+            Size.Height = 30.000000000000000000
+            Size.PlatformDefault = False
+          end
+          inherited ListBoxItem10: TListBoxItem
+            Position.Y = 440.000000000000000000
+            Size.Width = 381.000000000000000000
+            inherited tests: TLabel
+              Position.X = 258.000000000000000000
+            end
+          end
+          inherited ListBoxItem11: TListBoxItem
+            Position.Y = 472.000000000000000000
+            Size.Width = 381.000000000000000000
+            inherited testsPerOneMillion: TLabel
+              Position.X = 258.000000000000000000
+            end
+          end
+        end
+      end
+    end
+    object TabPaises: TTabItem
+      CustomIcon = <
+        item
+        end>
+      IsSelected = False
+      Size.Width = 201.000000000000000000
+      Size.Height = 49.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = ''
+      TabOrder = 0
+      Text = 'Pa'#237'ses'
+      ExplicitSize.cx = 199.000000000000000000
+      ExplicitSize.cy = 49.000000000000000000
+      inline FramePaises1: TFramePaises
+        Align = Client
+        Size.Width = 401.000000000000000000
+        Size.Height = 535.000000000000000000
+        Size.PlatformDefault = False
+        inherited TbcPaises: TTabControl
+          Size.Width = 381.000000000000000000
+          Size.Height = 525.000000000000000000
+          TabHeight = 49.000000000000000000
+          TabIndex = 0
+          Sizes = (
+            381s
+            525s
+            381s
+            525s)
+          inherited TabPaises: TTabItem
+            IsSelected = True
+            ExplicitSize.cx = 8.000000000000000000
+            ExplicitSize.cy = 8.000000000000000000
+            inherited LsvPaises: TListView
+              Size.Width = 381.000000000000000000
+              Size.Height = 525.000000000000000000
+            end
+          end
+          inherited TabPaisSelecionado: TTabItem
+            IsSelected = False
+            ExplicitSize.cx = 8.000000000000000000
+            ExplicitSize.cy = 8.000000000000000000
+            inherited BtnVoltar: TSpeedButton
+              Position.Y = 477.000000000000000000
+              Size.Width = 381.000000000000000000
+              Size.Height = 48.000000000000000000
+            end
+            inherited ToolBar1: TToolBar
+              Size.Width = 381.000000000000000000
+              Size.Height = 48.000000000000000000
+              TabOrder = 4
+              inherited LblNomePais: TLabel
+                Size.Width = 381.000000000000000000
+                Size.Height = 48.000000000000000000
+              end
+            end
+            inherited LstDadosPais: TListBox
+              Size.Width = 381.000000000000000000
+              Size.Height = 419.000000000000000000
+              Viewport.Width = 377.000000000000000000
+              Viewport.Height = 415.000000000000000000
+              inherited ListBoxGroupHeader5: TListBoxGroupHeader [0]
+                Size.Width = 362.000000000000000000
+                Size.Height = 30.000000000000000000
+                Size.PlatformDefault = False
+              end
+              inherited ListBoxItem6: TListBoxItem [1]
+                Position.Y = 30.000000000000000000
+                Size.Width = 362.000000000000000000
+                inherited active: TLabel
+                  Position.X = 239.000000000000000000
+                end
+              end
+              inherited ListBoxItem7: TListBoxItem [2]
+                Position.Y = 62.000000000000000000
+                Size.Width = 362.000000000000000000
+                inherited critical: TLabel
+                  Position.X = 239.000000000000000000
+                end
+              end
+              inherited ListBoxItem5: TListBoxItem [3]
+                Position.Y = 94.000000000000000000
+                Size.Width = 362.000000000000000000
+                inherited recovered: TLabel
+                  Position.X = 239.000000000000000000
+                end
+              end
+              inherited ListBoxGroupHeader3: TListBoxGroupHeader [4]
+                Position.Y = 126.000000000000000000
+                Size.Width = 362.000000000000000000
+                Size.Height = 30.000000000000000000
+                Size.PlatformDefault = False
+              end
+              inherited ListBoxItem1: TListBoxItem [5]
+                Position.Y = 156.000000000000000000
+                Size.Width = 362.000000000000000000
+                inherited cases: TLabel
+                  Position.X = 239.000000000000000000
+                end
+              end
+              inherited ListBoxItem2: TListBoxItem [6]
+                Position.Y = 188.000000000000000000
+                Size.Width = 362.000000000000000000
+                inherited todayCases: TLabel
+                  Position.X = 239.000000000000000000
+                end
+              end
+              inherited ListBoxItem8: TListBoxItem [7]
+                Position.Y = 220.000000000000000000
+                Size.Width = 362.000000000000000000
+                inherited casesPerOneMillion: TLabel
+                  Position.X = 239.000000000000000000
+                end
+              end
+              inherited ListBoxGroupHeader4: TListBoxGroupHeader [8]
+                Position.Y = 252.000000000000000000
+                Size.Width = 362.000000000000000000
+                Size.Height = 30.000000000000000000
+                Size.PlatformDefault = False
+              end
+              inherited ListBoxItem3: TListBoxItem [9]
+                Position.Y = 282.000000000000000000
+                Size.Width = 362.000000000000000000
+                inherited deaths: TLabel
+                  Position.X = 239.000000000000000000
+                end
+              end
+              inherited ListBoxItem4: TListBoxItem [10]
+                Position.Y = 314.000000000000000000
+                Size.Width = 362.000000000000000000
+                inherited todayDeaths: TLabel
+                  Position.X = 239.000000000000000000
+                end
+              end
+              inherited ListBoxItem9: TListBoxItem [11]
+                Position.Y = 346.000000000000000000
+                Size.Width = 362.000000000000000000
+                inherited deathsPerOneMillion: TLabel
+                  Position.X = 239.000000000000000000
+                end
+              end
+              inherited ListBoxGroupHeader2: TListBoxGroupHeader [12]
+                Position.Y = 378.000000000000000000
+                Size.Width = 362.000000000000000000
+                Size.Height = 30.000000000000000000
+                Size.PlatformDefault = False
+              end
+              inherited ListBoxItem10: TListBoxItem [13]
+                Position.Y = 408.000000000000000000
+                Size.Width = 362.000000000000000000
+                inherited tests: TLabel
+                  Position.X = 239.000000000000000000
+                end
+              end
+              inherited ListBoxItem11: TListBoxItem [14]
+                Position.Y = 440.000000000000000000
+                Size.Width = 362.000000000000000000
+                inherited testsPerOneMillion: TLabel
+                  Position.X = 239.000000000000000000
+                end
+              end
+              inherited ListBoxItem12: TListBoxItem [15]
+                TextSettings.Font.StyleExt = {00070000000000000004000000}
+                Position.Y = 472.000000000000000000
+                Size.Width = 362.000000000000000000
+                inherited continent: TLabel
+                  Position.X = 239.000000000000000000
+                  TextSettings.Font.StyleExt = {00070000000000000004000000}
+                end
+              end
+            end
+          end
+        end
+      end
+    end
+  end
+  inline FrameProgresso1: TFrameProgresso
+    Align = Contents
+    Size.Width = 401.000000000000000000
+    Size.Height = 632.000000000000000000
+    Size.PlatformDefault = False
+    Visible = False
+    inherited BackgroundRectangle: TRectangle
+      Size.Width = 401.000000000000000000
+      Size.Height = 632.000000000000000000
+    end
+    inherited Layout1: TLayout
+      Size.Width = 401.000000000000000000
+      Size.Height = 632.000000000000000000
+      inherited LblMensagem: TLabel
+        Position.Y = 551.000000000000000000
+        Size.Width = 401.000000000000000000
+        TextSettings.Font.StyleExt = {00070000000000000004000000}
+      end
+      inherited Layout2: TLayout
+        Size.Width = 401.000000000000000000
+        Size.Height = 632.000000000000000000
+      end
+    end
+  end
+end

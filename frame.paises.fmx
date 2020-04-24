@@ -1,0 +1,465 @@
+object FramePaises: TFramePaises
+  Size.Width = 390.000000000000000000
+  Size.Height = 647.000000000000000000
+  Size.PlatformDefault = False
+  object TbcPaises: TTabControl
+    Align = Client
+    Margins.Left = 10.000000000000000000
+    Margins.Top = 5.000000000000000000
+    Margins.Right = 10.000000000000000000
+    Margins.Bottom = 5.000000000000000000
+    Size.Width = 370.000000000000000000
+    Size.Height = 637.000000000000000000
+    Size.PlatformDefault = False
+    TabIndex = 1
+    TabOrder = 0
+    TabPosition = None
+    Sizes = (
+      370s
+      637s
+      370s
+      637s)
+    object TabPaises: TTabItem
+      CustomIcon = <
+        item
+        end>
+      IsSelected = False
+      Size.Width = 8.000000000000000000
+      Size.Height = 8.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = ''
+      TabOrder = 0
+      Text = 'TabPaises'
+      ExplicitSize.cx = 8.000000000000000000
+      ExplicitSize.cy = 8.000000000000000000
+      object LsvPaises: TListView
+        ItemAppearanceClassName = 'TListItemAppearance'
+        ItemEditAppearanceClassName = 'TListItemShowCheckAppearance'
+        HeaderAppearanceClassName = 'TListHeaderObjects'
+        FooterAppearanceClassName = 'TListHeaderObjects'
+        Align = Client
+        Size.Width = 370.000000000000000000
+        Size.Height = 637.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        CanSwipeDelete = False
+        OnItemClick = LsvPaisesItemClick
+        OnPullRefresh = LsvPaisesPullRefresh
+        SearchVisible = True
+        PullToRefresh = True
+        PullRefreshWait = True
+      end
+    end
+    object TabPaisSelecionado: TTabItem
+      CustomIcon = <
+        item
+        end>
+      IsSelected = True
+      Size.Width = 8.000000000000000000
+      Size.Height = 8.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = ''
+      TabOrder = 0
+      Text = 'TabPaisSelecionado'
+      ExplicitSize.cx = 8.000000000000000000
+      ExplicitSize.cy = 8.000000000000000000
+      object BtnVoltar: TSpeedButton
+        Align = Bottom
+        Margins.Top = 10.000000000000000000
+        Position.Y = 597.000000000000000000
+        Size.Width = 370.000000000000000000
+        Size.Height = 40.000000000000000000
+        Size.PlatformDefault = False
+        Text = 'Voltar'
+        OnClick = BtnVoltarClick
+      end
+      object ToolBar1: TToolBar
+        Size.Width = 370.000000000000000000
+        Size.Height = 40.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 3
+        object LblNomePais: TLabel
+          Align = Contents
+          Size.Width = 370.000000000000000000
+          Size.Height = 40.000000000000000000
+          Size.PlatformDefault = False
+          StyleLookup = 'toollabel'
+          TextSettings.HorzAlign = Center
+          Text = 'NOME DO PAIS'
+          TabOrder = 0
+        end
+      end
+      object LstDadosPais: TListBox
+        Align = Client
+        Size.Width = 370.000000000000000000
+        Size.Height = 547.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        DisableFocusEffect = True
+        DefaultItemStyles.ItemStyle = ''
+        DefaultItemStyles.GroupHeaderStyle = ''
+        DefaultItemStyles.GroupFooterStyle = ''
+        Viewport.Width = 366.000000000000000000
+        Viewport.Height = 543.000000000000000000
+        object ListBoxItem12: TListBoxItem
+          TextSettings.Font.StyleExt = {00070000000000000004000000}
+          StyledSettings = [Family, Size, FontColor, Other]
+          Size.Width = 366.000000000000000000
+          Size.Height = 41.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 15
+          Text = 'Continente:'
+          object continent: TLabel
+            Touch.InteractiveGestures = [LongTap, DoubleTap]
+            Align = MostRight
+            AutoSize = True
+            StyledSettings = [Family, Size, FontColor]
+            Margins.Left = 3.000000000000000000
+            Margins.Top = 3.000000000000000000
+            Margins.Right = 3.000000000000000000
+            Margins.Bottom = 3.000000000000000000
+            Position.X = 243.000000000000000000
+            Position.Y = 3.000000000000000000
+            Size.Width = 120.000000000000000000
+            Size.Height = 35.000000000000000000
+            Size.PlatformDefault = False
+            TextSettings.Font.StyleExt = {00070000000000000004000000}
+            TextSettings.HorzAlign = Trailing
+            Text = '...'
+            TabOrder = 0
+          end
+        end
+        object ListBoxGroupHeader5: TListBoxGroupHeader
+          Position.Y = 41.000000000000000000
+          TabOrder = 14
+          Text = 'Geral'
+        end
+        object ListBoxItem6: TListBoxItem
+          Position.Y = 60.000000000000000000
+          Size.Width = 366.000000000000000000
+          Size.Height = 32.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 5
+          Text = 'Ativos:'
+          object active: TLabel
+            Touch.InteractiveGestures = [LongTap, DoubleTap]
+            Align = MostRight
+            AutoSize = True
+            Margins.Left = 3.000000000000000000
+            Margins.Top = 3.000000000000000000
+            Margins.Right = 3.000000000000000000
+            Margins.Bottom = 3.000000000000000000
+            Position.X = 243.000000000000000000
+            Position.Y = 3.000000000000000000
+            Size.Width = 120.000000000000000000
+            Size.Height = 26.000000000000000000
+            Size.PlatformDefault = False
+            TextSettings.HorzAlign = Trailing
+            Text = '...'
+            TabOrder = 0
+          end
+        end
+        object ListBoxItem7: TListBoxItem
+          Position.Y = 92.000000000000000000
+          Size.Width = 366.000000000000000000
+          Size.Height = 32.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 6
+          Text = 'Estado cr'#237'tico:'
+          object critical: TLabel
+            Touch.InteractiveGestures = [LongTap, DoubleTap]
+            Align = MostRight
+            AutoSize = True
+            Margins.Left = 3.000000000000000000
+            Margins.Top = 3.000000000000000000
+            Margins.Right = 3.000000000000000000
+            Margins.Bottom = 3.000000000000000000
+            Position.X = 243.000000000000000000
+            Position.Y = 3.000000000000000000
+            Size.Width = 120.000000000000000000
+            Size.Height = 26.000000000000000000
+            Size.PlatformDefault = False
+            TextSettings.HorzAlign = Trailing
+            Text = '...'
+            TabOrder = 0
+          end
+        end
+        object ListBoxItem5: TListBoxItem
+          Position.Y = 124.000000000000000000
+          Size.Width = 366.000000000000000000
+          Size.Height = 32.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 4
+          Text = 'Recuperados/Descartados:'
+          object recovered: TLabel
+            Touch.InteractiveGestures = [LongTap, DoubleTap]
+            Align = MostRight
+            AutoSize = True
+            Margins.Left = 3.000000000000000000
+            Margins.Top = 3.000000000000000000
+            Margins.Right = 3.000000000000000000
+            Margins.Bottom = 3.000000000000000000
+            Position.X = 243.000000000000000000
+            Position.Y = 3.000000000000000000
+            Size.Width = 120.000000000000000000
+            Size.Height = 26.000000000000000000
+            Size.PlatformDefault = False
+            TextSettings.HorzAlign = Trailing
+            Text = '...'
+            TabOrder = 0
+          end
+        end
+        object ListBoxGroupHeader3: TListBoxGroupHeader
+          Position.Y = 156.000000000000000000
+          TabOrder = 12
+          Text = 'Casos'
+        end
+        object ListBoxItem1: TListBoxItem
+          Position.Y = 175.000000000000000000
+          Size.Width = 366.000000000000000000
+          Size.Height = 32.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 0
+          Text = 'Total:'
+          object cases: TLabel
+            Touch.InteractiveGestures = [LongTap, DoubleTap]
+            Align = MostRight
+            AutoSize = True
+            Margins.Left = 3.000000000000000000
+            Margins.Top = 3.000000000000000000
+            Margins.Right = 3.000000000000000000
+            Margins.Bottom = 3.000000000000000000
+            Position.X = 243.000000000000000000
+            Position.Y = 3.000000000000000000
+            Size.Width = 120.000000000000000000
+            Size.Height = 26.000000000000000000
+            Size.PlatformDefault = False
+            TextSettings.HorzAlign = Trailing
+            Text = '...'
+            TabOrder = 0
+          end
+        end
+        object ListBoxItem2: TListBoxItem
+          Position.Y = 207.000000000000000000
+          Size.Width = 366.000000000000000000
+          Size.Height = 32.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 1
+          Text = 'Novos casos hoje:'
+          object todayCases: TLabel
+            Touch.InteractiveGestures = [LongTap, DoubleTap]
+            Align = MostRight
+            AutoSize = True
+            Margins.Left = 3.000000000000000000
+            Margins.Top = 3.000000000000000000
+            Margins.Right = 3.000000000000000000
+            Margins.Bottom = 3.000000000000000000
+            Position.X = 243.000000000000000000
+            Position.Y = 3.000000000000000000
+            Size.Width = 120.000000000000000000
+            Size.Height = 26.000000000000000000
+            Size.PlatformDefault = False
+            TextSettings.HorzAlign = Trailing
+            Text = '...'
+            TabOrder = 0
+          end
+        end
+        object ListBoxItem8: TListBoxItem
+          Position.Y = 239.000000000000000000
+          Size.Width = 366.000000000000000000
+          Size.Height = 32.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 7
+          Text = 'Por milh'#227'o (popula'#231#227'o)'
+          object casesPerOneMillion: TLabel
+            Touch.InteractiveGestures = [LongTap, DoubleTap]
+            Align = MostRight
+            AutoSize = True
+            Margins.Left = 3.000000000000000000
+            Margins.Top = 3.000000000000000000
+            Margins.Right = 3.000000000000000000
+            Margins.Bottom = 3.000000000000000000
+            Position.X = 243.000000000000000000
+            Position.Y = 3.000000000000000000
+            Size.Width = 120.000000000000000000
+            Size.Height = 26.000000000000000000
+            Size.PlatformDefault = False
+            TextSettings.HorzAlign = Trailing
+            Text = '...'
+            TabOrder = 0
+          end
+        end
+        object ListBoxGroupHeader4: TListBoxGroupHeader
+          Position.Y = 271.000000000000000000
+          TabOrder = 13
+          Text = 'Mortes'
+        end
+        object ListBoxItem3: TListBoxItem
+          Position.Y = 290.000000000000000000
+          Size.Width = 366.000000000000000000
+          Size.Height = 32.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 2
+          Text = 'Total:'
+          object deaths: TLabel
+            Touch.InteractiveGestures = [LongTap, DoubleTap]
+            Align = MostRight
+            AutoSize = True
+            Margins.Left = 3.000000000000000000
+            Margins.Top = 3.000000000000000000
+            Margins.Right = 3.000000000000000000
+            Margins.Bottom = 3.000000000000000000
+            Position.X = 243.000000000000000000
+            Position.Y = 3.000000000000000000
+            Size.Width = 120.000000000000000000
+            Size.Height = 26.000000000000000000
+            Size.PlatformDefault = False
+            TextSettings.HorzAlign = Trailing
+            Text = '...'
+            TabOrder = 0
+          end
+        end
+        object ListBoxItem4: TListBoxItem
+          Position.Y = 322.000000000000000000
+          Size.Width = 366.000000000000000000
+          Size.Height = 32.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 3
+          Text = 'Mortes hoje:'
+          object todayDeaths: TLabel
+            Touch.InteractiveGestures = [LongTap, DoubleTap]
+            Align = MostRight
+            AutoSize = True
+            Margins.Left = 3.000000000000000000
+            Margins.Top = 3.000000000000000000
+            Margins.Right = 3.000000000000000000
+            Margins.Bottom = 3.000000000000000000
+            Position.X = 243.000000000000000000
+            Position.Y = 3.000000000000000000
+            Size.Width = 120.000000000000000000
+            Size.Height = 26.000000000000000000
+            Size.PlatformDefault = False
+            TextSettings.HorzAlign = Trailing
+            Text = '...'
+            TabOrder = 0
+          end
+        end
+        object ListBoxItem9: TListBoxItem
+          Position.Y = 354.000000000000000000
+          Size.Width = 366.000000000000000000
+          Size.Height = 32.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 8
+          Text = 'Por milh'#227'o (popula'#231#227'o):'
+          object deathsPerOneMillion: TLabel
+            Touch.InteractiveGestures = [LongTap, DoubleTap]
+            Align = MostRight
+            AutoSize = True
+            Margins.Left = 3.000000000000000000
+            Margins.Top = 3.000000000000000000
+            Margins.Right = 3.000000000000000000
+            Margins.Bottom = 3.000000000000000000
+            Position.X = 243.000000000000000000
+            Position.Y = 3.000000000000000000
+            Size.Width = 120.000000000000000000
+            Size.Height = 26.000000000000000000
+            Size.PlatformDefault = False
+            TextSettings.HorzAlign = Trailing
+            Text = '...'
+            TabOrder = 0
+          end
+        end
+        object ListBoxGroupHeader2: TListBoxGroupHeader
+          Position.Y = 386.000000000000000000
+          TabOrder = 9
+          Text = 'Testes'
+        end
+        object ListBoxItem10: TListBoxItem
+          Position.Y = 405.000000000000000000
+          Size.Width = 366.000000000000000000
+          Size.Height = 32.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 10
+          Text = 'Total:'
+          object tests: TLabel
+            Touch.InteractiveGestures = [LongTap, DoubleTap]
+            Align = MostRight
+            AutoSize = True
+            Margins.Left = 3.000000000000000000
+            Margins.Top = 3.000000000000000000
+            Margins.Right = 3.000000000000000000
+            Margins.Bottom = 3.000000000000000000
+            Position.X = 243.000000000000000000
+            Position.Y = 3.000000000000000000
+            Size.Width = 120.000000000000000000
+            Size.Height = 26.000000000000000000
+            Size.PlatformDefault = False
+            TextSettings.HorzAlign = Trailing
+            Text = '...'
+            TabOrder = 0
+          end
+        end
+        object ListBoxItem11: TListBoxItem
+          Position.Y = 437.000000000000000000
+          Size.Width = 366.000000000000000000
+          Size.Height = 32.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 11
+          Text = 'Por milh'#227'o (popula'#231#227'o):'
+          object testsPerOneMillion: TLabel
+            Touch.InteractiveGestures = [LongTap, DoubleTap]
+            Align = MostRight
+            AutoSize = True
+            Margins.Left = 3.000000000000000000
+            Margins.Top = 3.000000000000000000
+            Margins.Right = 3.000000000000000000
+            Margins.Bottom = 3.000000000000000000
+            Position.X = 243.000000000000000000
+            Position.Y = 3.000000000000000000
+            Size.Width = 120.000000000000000000
+            Size.Height = 26.000000000000000000
+            Size.PlatformDefault = False
+            TextSettings.HorzAlign = Trailing
+            Text = '...'
+            TabOrder = 0
+          end
+        end
+      end
+    end
+  end
+  object ActPaises: TActionList
+    Left = 225
+    Top = 495
+    object ChangeTabAction1: TChangeTabAction
+      Category = 'Tab'
+    end
+  end
+  object BindSourcePaises: TBindSourceDB
+    DataSet = DtmPrincipal.TbPaises
+    ScopeMappings = <>
+    Left = 110
+    Top = 505
+  end
+  object BindingsListPaises: TBindingsList
+    Methods = <>
+    OutputConverters = <>
+    Left = 105
+    Top = 555
+    object LinkListControlToField1: TLinkListControlToField
+      Category = 'Quick Bindings'
+      DataSource = BindSourcePaises
+      FieldName = 'country'
+      Control = LsvPaises
+      FillExpressions = <>
+      FillHeaderExpressions = <>
+      FillBreakGroups = <>
+    end
+    object LinkPropertyToFieldText: TLinkPropertyToField
+      Category = 'Quick Bindings'
+      DataSource = BindSourcePaises
+      FieldName = 'country'
+      Component = LblNomePais
+      ComponentProperty = 'Text'
+    end
+  end
+end
