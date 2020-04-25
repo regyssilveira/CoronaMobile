@@ -63,21 +63,11 @@ object FramePaises: TFramePaises
       Text = 'TabPaisSelecionado'
       ExplicitSize.cx = 8.000000000000000000
       ExplicitSize.cy = 8.000000000000000000
-      object BtnVoltar: TSpeedButton
-        Align = Bottom
-        Margins.Top = 10.000000000000000000
-        Position.Y = 597.000000000000000000
-        Size.Width = 370.000000000000000000
-        Size.Height = 40.000000000000000000
-        Size.PlatformDefault = False
-        Text = 'Voltar'
-        OnClick = BtnVoltarClick
-      end
       object ToolBar1: TToolBar
         Size.Width = 370.000000000000000000
         Size.Height = 40.000000000000000000
         Size.PlatformDefault = False
-        TabOrder = 3
+        TabOrder = 4
         object LblNomePais: TLabel
           Align = Contents
           Size.Width = 370.000000000000000000
@@ -88,11 +78,33 @@ object FramePaises: TFramePaises
           Text = 'NOME DO PAIS'
           TabOrder = 0
         end
+        object ImgBandeira: TImage
+          MultiResBitmap = <
+            item
+            end>
+          Align = MostRight
+          Margins.Left = 3.000000000000000000
+          Margins.Top = 3.000000000000000000
+          Margins.Bottom = 3.000000000000000000
+          Position.X = 304.000000000000000000
+          Position.Y = 3.000000000000000000
+          Size.Width = 66.000000000000000000
+          Size.Height = 34.000000000000000000
+          Size.PlatformDefault = False
+        end
+        object BtnVoltar: TSpeedButton
+          Align = Left
+          Size.Width = 36.000000000000000000
+          Size.Height = 40.000000000000000000
+          Size.PlatformDefault = False
+          StyleLookup = 'backtoolbutton'
+          OnClick = BtnVoltarClick
+        end
       end
       object LstDadosPais: TListBox
         Align = Client
         Size.Width = 370.000000000000000000
-        Size.Height = 547.000000000000000000
+        Size.Height = 597.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 0
         DisableFocusEffect = True
@@ -100,12 +112,12 @@ object FramePaises: TFramePaises
         DefaultItemStyles.GroupHeaderStyle = ''
         DefaultItemStyles.GroupFooterStyle = ''
         Viewport.Width = 366.000000000000000000
-        Viewport.Height = 543.000000000000000000
+        Viewport.Height = 593.000000000000000000
         object ListBoxItem12: TListBoxItem
           TextSettings.Font.StyleExt = {00070000000000000004000000}
           StyledSettings = [Family, Size, FontColor, Other]
           Size.Width = 366.000000000000000000
-          Size.Height = 41.000000000000000000
+          Size.Height = 40.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 15
           Text = 'Continente:'
@@ -121,7 +133,7 @@ object FramePaises: TFramePaises
             Position.X = 243.000000000000000000
             Position.Y = 3.000000000000000000
             Size.Width = 120.000000000000000000
-            Size.Height = 35.000000000000000000
+            Size.Height = 34.000000000000000000
             Size.PlatformDefault = False
             TextSettings.Font.StyleExt = {00070000000000000004000000}
             TextSettings.HorzAlign = Trailing
@@ -130,12 +142,12 @@ object FramePaises: TFramePaises
           end
         end
         object ListBoxGroupHeader5: TListBoxGroupHeader
-          Position.Y = 41.000000000000000000
+          Position.Y = 40.000000000000000000
           TabOrder = 14
           Text = 'Geral'
         end
         object ListBoxItem6: TListBoxItem
-          Position.Y = 60.000000000000000000
+          Position.Y = 59.000000000000000000
           Size.Width = 366.000000000000000000
           Size.Height = 32.000000000000000000
           Size.PlatformDefault = False
@@ -160,7 +172,7 @@ object FramePaises: TFramePaises
           end
         end
         object ListBoxItem7: TListBoxItem
-          Position.Y = 92.000000000000000000
+          Position.Y = 91.000000000000000000
           Size.Width = 366.000000000000000000
           Size.Height = 32.000000000000000000
           Size.PlatformDefault = False
@@ -185,7 +197,7 @@ object FramePaises: TFramePaises
           end
         end
         object ListBoxItem5: TListBoxItem
-          Position.Y = 124.000000000000000000
+          Position.Y = 123.000000000000000000
           Size.Width = 366.000000000000000000
           Size.Height = 32.000000000000000000
           Size.PlatformDefault = False
@@ -210,12 +222,12 @@ object FramePaises: TFramePaises
           end
         end
         object ListBoxGroupHeader3: TListBoxGroupHeader
-          Position.Y = 156.000000000000000000
+          Position.Y = 155.000000000000000000
           TabOrder = 12
           Text = 'Casos'
         end
         object ListBoxItem1: TListBoxItem
-          Position.Y = 175.000000000000000000
+          Position.Y = 174.000000000000000000
           Size.Width = 366.000000000000000000
           Size.Height = 32.000000000000000000
           Size.PlatformDefault = False
@@ -240,7 +252,7 @@ object FramePaises: TFramePaises
           end
         end
         object ListBoxItem2: TListBoxItem
-          Position.Y = 207.000000000000000000
+          Position.Y = 206.000000000000000000
           Size.Width = 366.000000000000000000
           Size.Height = 32.000000000000000000
           Size.PlatformDefault = False
@@ -265,7 +277,7 @@ object FramePaises: TFramePaises
           end
         end
         object ListBoxItem8: TListBoxItem
-          Position.Y = 239.000000000000000000
+          Position.Y = 238.000000000000000000
           Size.Width = 366.000000000000000000
           Size.Height = 32.000000000000000000
           Size.PlatformDefault = False
@@ -290,12 +302,12 @@ object FramePaises: TFramePaises
           end
         end
         object ListBoxGroupHeader4: TListBoxGroupHeader
-          Position.Y = 271.000000000000000000
+          Position.Y = 270.000000000000000000
           TabOrder = 13
           Text = 'Mortes'
         end
         object ListBoxItem3: TListBoxItem
-          Position.Y = 290.000000000000000000
+          Position.Y = 289.000000000000000000
           Size.Width = 366.000000000000000000
           Size.Height = 32.000000000000000000
           Size.PlatformDefault = False
@@ -320,7 +332,7 @@ object FramePaises: TFramePaises
           end
         end
         object ListBoxItem4: TListBoxItem
-          Position.Y = 322.000000000000000000
+          Position.Y = 321.000000000000000000
           Size.Width = 366.000000000000000000
           Size.Height = 32.000000000000000000
           Size.PlatformDefault = False
@@ -345,7 +357,7 @@ object FramePaises: TFramePaises
           end
         end
         object ListBoxItem9: TListBoxItem
-          Position.Y = 354.000000000000000000
+          Position.Y = 353.000000000000000000
           Size.Width = 366.000000000000000000
           Size.Height = 32.000000000000000000
           Size.PlatformDefault = False
@@ -370,12 +382,12 @@ object FramePaises: TFramePaises
           end
         end
         object ListBoxGroupHeader2: TListBoxGroupHeader
-          Position.Y = 386.000000000000000000
+          Position.Y = 385.000000000000000000
           TabOrder = 9
           Text = 'Testes'
         end
         object ListBoxItem10: TListBoxItem
-          Position.Y = 405.000000000000000000
+          Position.Y = 404.000000000000000000
           Size.Width = 366.000000000000000000
           Size.Height = 32.000000000000000000
           Size.PlatformDefault = False
@@ -400,7 +412,7 @@ object FramePaises: TFramePaises
           end
         end
         object ListBoxItem11: TListBoxItem
-          Position.Y = 437.000000000000000000
+          Position.Y = 436.000000000000000000
           Size.Width = 366.000000000000000000
           Size.Height = 32.000000000000000000
           Size.PlatformDefault = False
@@ -428,8 +440,8 @@ object FramePaises: TFramePaises
     end
   end
   object ActPaises: TActionList
-    Left = 225
-    Top = 495
+    Left = 215
+    Top = 385
     object ChangeTabAction1: TChangeTabAction
       Category = 'Tab'
     end
@@ -437,14 +449,14 @@ object FramePaises: TFramePaises
   object BindSourcePaises: TBindSourceDB
     DataSet = DtmPrincipal.TbPaises
     ScopeMappings = <>
-    Left = 110
-    Top = 505
+    Left = 115
+    Top = 385
   end
   object BindingsListPaises: TBindingsList
     Methods = <>
     OutputConverters = <>
-    Left = 105
-    Top = 555
+    Left = 115
+    Top = 425
     object LinkListControlToField1: TLinkListControlToField
       Category = 'Quick Bindings'
       DataSource = BindSourcePaises

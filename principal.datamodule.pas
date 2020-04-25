@@ -3,7 +3,7 @@ unit principal.datamodule;
 interface
 
 uses
-  FMX.Forms, FMX.StdCtrls,
+  FMX.Forms, FMX.StdCtrls, FMX.Objects,
 
   System.SysUtils, System.Classes, REST.Types, REST.Client,
   Data.Bind.Components, Data.Bind.ObjectScope, FireDAC.Stan.Intf,
@@ -92,6 +92,7 @@ type
   public
     procedure AtualizarResumo;
     procedure AtualizarPaises;
+    procedure ShowBandeiraPais(const AURLPng: string; const AImage: TImage);
   end;
 
 var
@@ -100,7 +101,12 @@ var
 implementation
 
 uses
-  System.Threading, principal;
+  principal,
+  FMX.Dialogs,
+  System.Threading,
+  System.Net.URLClient,
+  System.Net.HttpClient,
+  System.Net.HttpClientComponent;
 
 {%CLASSGROUP 'FMX.Controls.TControl'}
 
@@ -172,6 +178,36 @@ begin
       FrmPrincipal.HideActivity;
     end
   );
+end;
+
+procedure TDtmPrincipal.ShowBandeiraPais(const AURLPng: string; const AImage: TImage);
+begin
+  TThread.CreateAnonymousThread(
+    procedure
+    var
+      Ms: TMemoryStream;
+      HttpClient: TNetHTTPClient;
+    begin
+      HttpClient := TNetHTTPClient.Create(nil);
+      try
+        Ms := TMemoryStream.Create;
+        try
+          HttpClient.Get(AURLPng, Ms);
+
+          TThread.Synchronize(nil,
+            procedure
+            begin
+              AImage.Bitmap.LoadFromStream(Ms);
+            end
+          );
+        finally
+          Ms.DisposeOf;
+        end;
+      finally
+        HttpClient.DisposeOf;
+      end;
+    end
+  ).Start;
 end;
 
 end.

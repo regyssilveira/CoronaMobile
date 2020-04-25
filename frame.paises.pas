@@ -3,13 +3,13 @@ unit frame.paises;
 interface
 
 uses
-  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants, 
+  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
   FMX.Types, FMX.Graphics, FMX.Controls, FMX.Forms, FMX.Dialogs, FMX.StdCtrls,
   FMX.TabControl, FMX.Controls.Presentation, FMX.ListView.Types,
   FMX.ListView.Appearances, FMX.ListView.Adapters.Base, Data.Bind.EngExt,
   Fmx.Bind.DBEngExt, System.Rtti, System.Bindings.Outputs, Fmx.Bind.Editors,
   Data.Bind.Components, Data.Bind.DBScope, System.Actions, FMX.ActnList,
-  FMX.ListBox, FMX.Layouts, FMX.ListView;
+  FMX.ListBox, FMX.Layouts, FMX.ListView, FMX.Objects;
 
 type
   TFramePaises = class(TFrame)
@@ -21,7 +21,6 @@ type
     ChangeTabAction1: TChangeTabAction;
     BindSourcePaises: TBindSourceDB;
     BindingsListPaises: TBindingsList;
-    BtnVoltar: TSpeedButton;
     LinkListControlToField1: TLinkListControlToField;
     ToolBar1: TToolBar;
     LblNomePais: TLabel;
@@ -55,6 +54,8 @@ type
     testsPerOneMillion: TLabel;
     ListBoxItem12: TListBoxItem;
     continent: TLabel;
+    ImgBandeira: TImage;
+    BtnVoltar: TSpeedButton;
     procedure LsvPaisesPullRefresh(Sender: TObject);
     procedure BtnVoltarClick(Sender: TObject);
     procedure LsvPaisesItemClick(const Sender: TObject;
@@ -72,7 +73,6 @@ uses
 
 {$R *.fmx}
 
-
 procedure TFramePaises.Atualizar;
 begin
   TbcPaises.TabIndex := 0;
@@ -86,8 +86,14 @@ begin
 end;
 
 procedure TFramePaises.LsvPaisesItemClick(const Sender: TObject; const AItem: TListViewItem);
+var
+  URLBandeira: String;
 begin
   Self.Preencher(DtmPrincipal.TbPaises);
+
+  URLBandeira := DtmPrincipal.TbPaisescountryInfoflag.AsString.Trim;
+  if not URLBandeira.IsEmpty then
+    DtmPrincipal.ShowBandeiraPais(URLBandeira, ImgBandeira);
 
   ChangeTabAction1.Tab := TabPaisSelecionado;
   ChangeTabAction1.Execute;
