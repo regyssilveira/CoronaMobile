@@ -7,7 +7,7 @@ uses
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs,
   FMX.Controls.Presentation, FMX.StdCtrls, FMX.Layouts, FMX.ListBox,
   FMX.TabControl, System.ImageList, FMX.ImgList, FMX.MultiView,
-  frame.paises, frame.mundo, frame.progresso;
+  frame.paises, frame.mundo, frame.sobre;
 
 type
   TFrmPrincipal = class(TForm)
@@ -15,21 +15,23 @@ type
     TbcGeral: TTabControl;
     TabMundo: TTabItem;
     TabPaises: TTabItem;
-    Label1: TLabel;
+    LblCaption: TLabel;
     FrameMundo1: TFrameMundo;
     BtnSobre: TSpeedButton;
-    FrameProgresso1: TFrameProgresso;
     FramePaises1: TFramePaises;
+    BtnAtualizar: TSpeedButton;
+    FrameSobre1: TFrameSobre;
     procedure TbcGeralChange(Sender: TObject);
-    procedure FormShow(Sender: TObject);
-    procedure FrameMundo1LstResumoMundoTap(Sender: TObject;
-      const Point: TPointF);
     procedure BtnSobreClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure FormKeyDown(Sender: TObject; var Key: Word; var KeyChar: Char;
+      Shift: TShiftState);
+    procedure FormShow(Sender: TObject);
+    procedure BtnAtualizarClick(Sender: TObject);
   private
 
   public
-    procedure ShowActivity(const AMsg: string);
-    procedure HideActivity;
+
   end;
 
 var
@@ -38,45 +40,58 @@ var
 implementation
 
 uses
-  principal.datamodule, open.url;
+  principal.datamodule;
 
 {$R *.fmx}
 
-procedure TFrmPrincipal.BtnSobreClick(Sender: TObject);
+procedure TFrmPrincipal.FormCreate(Sender: TObject);
 begin
-  OpenURL('https://corona.lmao.ninja/');
-  OpenURL('https://corona.lmao.ninja/docs/');
+  TbcGeral.TabIndex := 0;
+  Self.Caption := LblCaption.Text;
+end;
+
+procedure TFrmPrincipal.FormKeyDown(Sender: TObject; var Key: Word;
+  var KeyChar: Char; Shift: TShiftState);
+begin
+  if Key in [vkBack, vkHardwareBack] then
+  begin
+    if FrameSobre1.Visible then
+    begin
+      FrameSobre1.Fechar;
+      Key := 0;
+    end
+    else
+    if TbcGeral.ActiveTab = TabPaises then
+    begin
+      if FramePaises1.TbcPaises.TabIndex > 0 then
+      begin
+        FramePaises1.BtnVoltarClick(nil);
+        Key := 0;
+      end;
+    end;
+  end;
 end;
 
 procedure TFrmPrincipal.FormShow(Sender: TObject);
 begin
-  TbcGeral.TabIndex := 0;
-  FrameMundo1.Atualizar;
-end;
-
-procedure TFrmPrincipal.FrameMundo1LstResumoMundoTap(Sender: TObject;
-  const Point: TPointF);
-begin
-  FrameMundo1.Atualizar;
+  BtnAtualizarClick(nil);
 end;
 
 procedure TFrmPrincipal.TbcGeralChange(Sender: TObject);
 begin
-  if TbcGeral.ActiveTab = TabMundo then
-    FrameMundo1.Atualizar
-  else
   if TbcGeral.ActiveTab = TabPaises then
-    FramePaises1.Atualizar;
+    FramePaises1.Inicializar;
 end;
 
-procedure TFrmPrincipal.ShowActivity(const AMsg: string);
+procedure TFrmPrincipal.BtnAtualizarClick(Sender: TObject);
 begin
-  FrameProgresso1.ShowActivity;
+  TbcGeral.TabIndex := 0;
+  DtmPrincipal.AtualizarTudo;
 end;
 
-procedure TFrmPrincipal.HideActivity;
+procedure TFrmPrincipal.BtnSobreClick(Sender: TObject);
 begin
-  FrameProgresso1.HideActivity;
+  FrameSobre1.Mostrar(TSobreModo.modSobre);
 end;
 
 end.

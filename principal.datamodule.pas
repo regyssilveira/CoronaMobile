@@ -21,6 +21,10 @@ type
     procedure Preencher(const ADataSet: TDataset);
   end;
 
+  TImageHelper = class helper for TImage
+    procedure DownloadPNG(const AURL: string);
+  end;
+
   TDtmPrincipal = class(TDataModule)
     RESTCli: TRESTClient;
     ReqResumo: TRESTRequest;
@@ -91,9 +95,9 @@ type
   private
 
   public
-    procedure AtualizarResumo;
     procedure AtualizarPaises;
-    procedure ShowBandeiraPais(const AURLPng: string; const AImage: TImage);
+    procedure AtualizarResumo;
+    procedure AtualizarTudo;
   end;
 
 var
@@ -107,7 +111,7 @@ uses
   System.Threading,
   System.Net.URLClient,
   System.Net.HttpClient,
-  System.Net.HttpClientComponent;
+  System.Net.HttpClientComponent, frame.sobre;
 
 {%CLASSGROUP 'FMX.Controls.TControl'}
 
@@ -179,37 +183,12 @@ begin
   Self.PreencherLabelPercentual(ADataSet, 'testsPerOneMillion');
 end;
 
-{ TDtmPrincipal }
+{ TImageHelper }
 
-procedure TDtmPrincipal.AtualizarResumo;
+procedure TImageHelper.DownloadPNG(const AURL: string);
 begin
-  TbResumo.Close;
+  Self.Bitmap := nil;
 
-  FrmPrincipal.ShowActivity('Atualizando resumo de informações...');
-  ReqResumo.ExecuteAsync(
-    procedure
-    begin
-      FrmPrincipal.FrameMundo1.Preencher(TbResumo);
-      FrmPrincipal.HideActivity;
-    end
-  );
-end;
-
-procedure TDtmPrincipal.AtualizarPaises;
-begin
-  TbPaises.Close;
-
-  FrmPrincipal.ShowActivity('Atualizando informações de países...');
-  ReqPaises.ExecuteAsync(
-    procedure
-    begin
-      FrmPrincipal.HideActivity;
-    end
-  );
-end;
-
-procedure TDtmPrincipal.ShowBandeiraPais(const AURLPng: string; const AImage: TImage);
-begin
   TThread.CreateAnonymousThread(
     procedure
     var
@@ -220,12 +199,12 @@ begin
       try
         Ms := TMemoryStream.Create;
         try
-          HttpClient.Get(AURLPng, Ms);
+          HttpClient.Get(AURL, Ms);
 
           TThread.Synchronize(nil,
             procedure
             begin
-              AImage.Bitmap.LoadFromStream(Ms);
+              Self.Bitmap.LoadFromStream(Ms);
             end
           );
         finally
@@ -236,6 +215,78 @@ begin
       end;
     end
   ).Start;
+end;
+
+{ TDtmPrincipal }
+
+procedure TDtmPrincipal.AtualizarTudo;
+begin
+  Self.AtualizarResumo;
+  Self.AtualizarPaises;
+end;
+
+procedure TDtmPrincipal.AtualizarResumo;
+begin
+  FrmPrincipal.FrameSobre1.Mostrar(TSobreModo.modSplash, 'Atualizando dados gerais...');
+  DtmPrincipal.ReqResumo.ExecuteAsync(
+    procedure
+    begin
+      if DtmPrincipal.RESTResp.Status.Success then
+        FrmPrincipal.FrameMundo1.Preencher(DtmPrincipal.TbResumo)
+      else
+      begin
+        FrmPrincipal.FrameSobre1.Fechar;
+        ShowMessage(
+          'Ocorreu um erro ao atualizar os dados:' + sLineBreak +
+          DtmPrincipal.RESTResp.StatusCode.ToString + ' - ' + DtmPrincipal.RESTResp.StatusText
+        );
+      end;
+    end,
+    True,
+    True,
+    procedure(AObject: TObject)
+    begin
+      FrmPrincipal.FrameSobre1.Fechar;
+      if Assigned(AObject) and (AObject is Exception) then
+      begin
+        ShowMessage(
+          'Ocorreu um erro ao atualizar os dados:' + sLineBreak +
+          Exception(AObject).Message
+        );
+      end;
+    end
+  );
+end;
+
+procedure TDtmPrincipal.AtualizarPaises;
+begin
+  FrmPrincipal.FrameSobre1.Mostrar(TSobreModo.modSplash, 'Efetuando download dos dados de países...');
+  ReqPaises.ExecuteAsync(
+    procedure
+    begin
+      FrmPrincipal.FrameSobre1.Fechar;
+      if not DtmPrincipal.RESTResp.Status.Success then
+      begin
+        ShowMessage(
+          'Ocorreu um erro ao atualizar os dados de países:' + sLineBreak +
+          DtmPrincipal.RESTResp.StatusCode.ToString + ' - ' + DtmPrincipal.RESTResp.StatusText
+        );
+      end;
+    end,
+    True,
+    True,
+    procedure(AObject: TObject)
+    begin
+      FrmPrincipal.FrameSobre1.Fechar;
+      if Assigned(AObject) and (AObject is Exception) then
+      begin
+        ShowMessage(
+          'Ocorreu um erro ao atualizar os dados de países:' + sLineBreak +
+          Exception(AObject).Message
+        );
+      end;
+    end
+  );
 end;
 
 end.

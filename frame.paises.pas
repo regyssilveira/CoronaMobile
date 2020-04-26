@@ -55,15 +55,15 @@ type
     ListBoxItem12: TListBoxItem;
     continent: TLabel;
     ImgBandeira: TImage;
+    Layout1: TLayout;
     BtnVoltar: TSpeedButton;
-    procedure LsvPaisesPullRefresh(Sender: TObject);
     procedure BtnVoltarClick(Sender: TObject);
     procedure LsvPaisesItemClick(const Sender: TObject;
       const AItem: TListViewItem);
   private
 
   public
-    procedure Atualizar;
+    procedure Inicializar;
   end;
 
 implementation
@@ -73,16 +73,9 @@ uses
 
 {$R *.fmx}
 
-procedure TFramePaises.Atualizar;
+procedure TFramePaises.Inicializar;
 begin
   TbcPaises.TabIndex := 0;
-  DtmPrincipal.AtualizarPaises;
-end;
-
-procedure TFramePaises.LsvPaisesPullRefresh(Sender: TObject);
-begin
-  // forçar atualização quando deslizar o dedo para baixo segurando
-  DtmPrincipal.AtualizarPaises;
 end;
 
 procedure TFramePaises.LsvPaisesItemClick(const Sender: TObject; const AItem: TListViewItem);
@@ -93,7 +86,7 @@ begin
 
   URLBandeira := DtmPrincipal.TbPaisescountryInfoflag.AsString.Trim;
   if not URLBandeira.IsEmpty then
-    DtmPrincipal.ShowBandeiraPais(URLBandeira, ImgBandeira);
+    ImgBandeira.DownloadPNG(URLBandeira);
 
   ChangeTabAction1.Tab := TabPaisSelecionado;
   ChangeTabAction1.Execute;

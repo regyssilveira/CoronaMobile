@@ -1,14 +1,14 @@
 object DtmPrincipal: TDtmPrincipal
   OldCreateOrder = False
-  Height = 443
-  Width = 724
+  Height = 473
+  Width = 408
   object RESTCli: TRESTClient
     Accept = 'application/json, text/plain; q=0.9, text/html;q=0.8,'
     AcceptCharset = 'utf-8, *;q=0.8'
     BaseURL = 'https://corona.lmao.ninja/v2'
     Params = <>
     Left = 80
-    Top = 35
+    Top = 55
   end
   object ReqResumo: TRESTRequest
     Client = RESTCli
@@ -17,7 +17,7 @@ object DtmPrincipal: TDtmPrincipal
     Response = RESTResp
     SynchronizedEvents = False
     Left = 80
-    Top = 95
+    Top = 115
   end
   object ReqPaises: TRESTRequest
     Client = RESTCli
@@ -26,12 +26,12 @@ object DtmPrincipal: TDtmPrincipal
     Response = RESTResp
     SynchronizedEvents = False
     Left = 170
-    Top = 95
+    Top = 115
   end
   object RESTResp: TRESTResponse
     ContentType = 'application/json'
     Left = 80
-    Top = 160
+    Top = 180
   end
   object ReqPais: TRESTRequest
     Client = RESTCli
@@ -46,7 +46,7 @@ object DtmPrincipal: TDtmPrincipal
     Response = RESTResp
     SynchronizedEvents = False
     Left = 260
-    Top = 95
+    Top = 115
   end
   object TbResumo: TFDMemTable
     FieldDefs = <>
