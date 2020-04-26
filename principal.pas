@@ -21,6 +21,7 @@ type
     FramePaises1: TFramePaises;
     BtnAtualizar: TSpeedButton;
     FrameSobre1: TFrameSobre;
+    ImageList1: TImageList;
     procedure TbcGeralChange(Sender: TObject);
     procedure BtnSobreClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
