@@ -69,7 +69,9 @@ type
 implementation
 
 uses
-  principal.datamodule;
+  principal.datamodule,
+  helper.frame,
+  helper.image;
 
 {$R *.fmx}
 
