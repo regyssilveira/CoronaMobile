@@ -11,7 +11,7 @@ implementation
 uses
   IdURI, SysUtils, Classes, FMX.Dialogs,
 {$IFDEF ANDROID}
-  Androidapi.Helpers,
+  Androidapi.Helpers, Androidapi.JNI.App,
   FMX.Helpers.Android, Androidapi.JNI.GraphicsContentViewText,
   Androidapi.JNI.Net, Androidapi.JNI.JavaTypes;
 {$ENDIF ANDROID}
@@ -32,7 +32,7 @@ begin
   Intent := TJIntent.JavaClass.init(TJIntent.JavaClass.ACTION_VIEW,
     TJnet_Uri.JavaClass.parse(StringToJString(TIdURI.URLEncode(URL))));
   try
-    SharedActivity.startActivity(Intent);
+    TAndroidHelper.Activity.startActivity(Intent);
     exit(true);
   except
     on e: Exception do

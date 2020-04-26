@@ -3,8 +3,6 @@ unit principal.datamodule;
 interface
 
 uses
-  FMX.Forms, FMX.StdCtrls, FMX.Objects,
-
   System.SysUtils, System.Classes, REST.Types, REST.Client,
   Data.Bind.Components, Data.Bind.ObjectScope, FireDAC.Stan.Intf,
   FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
@@ -12,20 +10,11 @@ uses
   FireDAC.Comp.DataSet, FireDAC.Comp.Client;
 
 type
-  TFieldHelper = class helper for TField
-    function AsNumFormatado: string;
-  end;
-
-  TFrameHelper = class helper for TFrame
-    procedure PreencherLabelPercentual(const ADataSet: TDataset; const AFieldCasos: string);
-    procedure Preencher(const ADataSet: TDataset);
-  end;
-
   TDtmPrincipal = class(TDataModule)
     RESTCli: TRESTClient;
     ReqResumo: TRESTRequest;
     ReqPaises: TRESTRequest;
-    RESTResp: TRESTResponse;
+    RespResumo: TRESTResponse;
     ReqPais: TRESTRequest;
     TbResumo: TFDMemTable;
     DtsAdpResumo: TRESTResponseDataSetAdapter;
@@ -88,12 +77,14 @@ type
     TbPaistests: TWideStringField;
     TbPaistestsPerOneMillion: TWideStringField;
     TbPaiscontinent: TWideStringField;
+    RespPaises: TRESTResponse;
+    RespPais: TRESTResponse;
   private
 
   public
-    procedure AtualizarResumo;
     procedure AtualizarPaises;
-    procedure ShowBandeiraPais(const AURLPng: string; const AImage: TImage);
+    procedure AtualizarResumo;
+    procedure AtualizarTudo;
   end;
 
 var
@@ -103,94 +94,55 @@ implementation
 
 uses
   principal,
-  FMX.Dialogs,
-  System.Threading,
-  System.Net.URLClient,
-  System.Net.HttpClient,
-  System.Net.HttpClientComponent;
+  frame.sobre,
+  helper.frame,
+  FMX.Dialogs;
 
 {%CLASSGROUP 'FMX.Controls.TControl'}
 
 {$R *.dfm}
 
-{ TFieldHelper }
-
-function TFieldHelper.AsNumFormatado: string;
+procedure TDtmPrincipal.AtualizarTudo;
 begin
-  if Self.AsString.Trim.IsEmpty then
-    Result := ''
-  else
-  begin
-    try
-      if Frac(Self.AsFloat) = 0.00 then
-        Result := FormatFloat(',#0', Self.AsFloat)
-      else
-        Result:= FormatFloat(',#0.00', Self.AsFloat);
-    except
-      Result := Self.AsString;
-    end;
-  end;
+  Self.AtualizarResumo;
+  Self.AtualizarPaises;
 end;
-
-{ TFrameHelper }
-
-procedure TFrameHelper.PreencherLabelPercentual(const ADataSet: TDataset; const AFieldCasos: string);
-var
-  LabelCalc: TComponent;
-  CampoCasos: TField;
-  PercCasos: Double;
-begin
-  CampoCasos := ADataSet.FindField(AFieldCasos);
-  if Assigned(CampoCasos) then
-  begin
-    LabelCalc := Self.FindComponent(AFieldCasos);
-    if Assigned(LabelCalc) then
-    begin
-      try
-        PercCasos := (CampoCasos.AsFloat * 100) / 1000000;
-      except
-        PercCasos := 0.00;
-      end;
-
-      (LabelCalc as TLabel).Text := FormatFloat(',#0.000%', PercCasos);
-    end;
-  end;
-end;
-
-procedure TFrameHelper.Preencher(const ADataSet: TDataset);
-var
-  I: Integer;
-  Controle: TComponent;
-  Campo: TField;
-begin
-  for I := 0 to Self.ComponentCount - 1 do
-  begin
-    Controle := Self.Components[I];
-    if (Controle is TLabel) then
-    begin
-      Campo := ADataSet.FindField(Controle.Name);
-      if Assigned(Campo) then
-        (Controle as TLabel).Text := Campo.AsNumFormatado;
-    end;
-  end;
-
-  Self.PreencherLabelPercentual(ADataSet, 'casesPerOneMillion');
-  Self.PreencherLabelPercentual(ADataSet, 'deathsPerOneMillion');
-  Self.PreencherLabelPercentual(ADataSet, 'testsPerOneMillion');
-end;
-
-{ TDtmPrincipal }
 
 procedure TDtmPrincipal.AtualizarResumo;
 begin
   TbResumo.Close;
 
-  FrmPrincipal.ShowActivity('Atualizando resumo de informações...');
+  FrmPrincipal.FrameSobre1.Mostrar(TSobreModo.modSplash, 'Atualizando dados gerais...');
   ReqResumo.ExecuteAsync(
     procedure
     begin
-      FrmPrincipal.FrameMundo1.Preencher(TbResumo);
-      FrmPrincipal.HideActivity;
+      if RespResumo.Status.Success then
+      begin
+        // forçar atualização do dataset
+        DtsAdpResumo.Active := True;
+        FrmPrincipal.FrameMundo1.Preencher(TbResumo);
+      end
+      else
+      begin
+        FrmPrincipal.FrameSobre1.Fechar;
+        ShowMessage(
+          'Ocorreu um erro ao acessar o webservice de resumo:' + sLineBreak +
+          RespResumo.StatusCode.ToString + ' - ' + RespResumo.StatusText
+        );
+      end;
+    end,
+    True,
+    True,
+    procedure(AObject: TObject)
+    begin
+      FrmPrincipal.FrameSobre1.Fechar;
+      if Assigned(AObject) and (AObject is Exception) then
+      begin
+        ShowMessage(
+          'Ocorreu um erro ao atualizar os dados de resumo:' + sLineBreak +
+          Exception(AObject).Message
+        );
+      end;
     end
   );
 end;
@@ -199,43 +151,38 @@ procedure TDtmPrincipal.AtualizarPaises;
 begin
   TbPaises.Close;
 
-  FrmPrincipal.ShowActivity('Atualizando informações de países...');
+  FrmPrincipal.FrameSobre1.Mostrar(TSobreModo.modSplash, 'Efetuando download dos dados de países...');
   ReqPaises.ExecuteAsync(
     procedure
     begin
-      FrmPrincipal.HideActivity;
-    end
-  );
-end;
-
-procedure TDtmPrincipal.ShowBandeiraPais(const AURLPng: string; const AImage: TImage);
-begin
-  TThread.CreateAnonymousThread(
-    procedure
-    var
-      Ms: TMemoryStream;
-      HttpClient: TNetHTTPClient;
+      FrmPrincipal.FrameSobre1.Fechar;
+      if RespPaises.Status.Success then
+      begin
+        // forçar atualização do dataset
+        DtsAdpPaises.Active := True;
+      end
+      else
+      begin
+        ShowMessage(
+          'Ocorreu um erro ao acessar o webservice de países:' + sLineBreak +
+          RespPaises.StatusCode.ToString + ' - ' + RespPaises.StatusText
+        );
+      end;
+    end,
+    True,
+    True,
+    procedure(AObject: TObject)
     begin
-      HttpClient := TNetHTTPClient.Create(nil);
-      try
-        Ms := TMemoryStream.Create;
-        try
-          HttpClient.Get(AURLPng, Ms);
-
-          TThread.Synchronize(nil,
-            procedure
-            begin
-              AImage.Bitmap.LoadFromStream(Ms);
-            end
-          );
-        finally
-          Ms.DisposeOf;
-        end;
-      finally
-        HttpClient.DisposeOf;
+      FrmPrincipal.FrameSobre1.Fechar;
+      if Assigned(AObject) and (AObject is Exception) then
+      begin
+        ShowMessage(
+          'Ocorreu um erro ao atualizar os dados de países:' + sLineBreak +
+          Exception(AObject).Message
+        );
       end;
     end
-  ).Start;
+  );
 end;
 
 end.

@@ -41,7 +41,7 @@ type
   private
 
   public
-    procedure Atualizar;
+
   end;
 
 implementation
@@ -52,10 +52,5 @@ uses
 {$R *.fmx}
 
 { TFrameMundo }
-
-procedure TFrameMundo.Atualizar;
-begin
-  DtmPrincipal.AtualizarResumo;
-end;
 
 end.

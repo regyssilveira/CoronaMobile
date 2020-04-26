@@ -4,21 +4,17 @@ object FramePaises: TFramePaises
   Size.PlatformDefault = False
   object TbcPaises: TTabControl
     Align = Client
-    Margins.Left = 10.000000000000000000
-    Margins.Top = 5.000000000000000000
-    Margins.Right = 10.000000000000000000
-    Margins.Bottom = 5.000000000000000000
-    Size.Width = 370.000000000000000000
-    Size.Height = 637.000000000000000000
+    Size.Width = 390.000000000000000000
+    Size.Height = 647.000000000000000000
     Size.PlatformDefault = False
     TabIndex = 1
     TabOrder = 0
     TabPosition = None
     Sizes = (
-      370s
-      637s
-      370s
-      637s)
+      390s
+      647s
+      390s
+      647s)
     object TabPaises: TTabItem
       CustomIcon = <
         item
@@ -38,16 +34,13 @@ object FramePaises: TFramePaises
         HeaderAppearanceClassName = 'TListHeaderObjects'
         FooterAppearanceClassName = 'TListHeaderObjects'
         Align = Client
-        Size.Width = 370.000000000000000000
-        Size.Height = 637.000000000000000000
+        Size.Width = 390.000000000000000000
+        Size.Height = 647.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 0
         CanSwipeDelete = False
         OnItemClick = LsvPaisesItemClick
-        OnPullRefresh = LsvPaisesPullRefresh
         SearchVisible = True
-        PullToRefresh = True
-        PullRefreshWait = True
       end
     end
     object TabPaisSelecionado: TTabItem
@@ -64,13 +57,13 @@ object FramePaises: TFramePaises
       ExplicitSize.cx = 8.000000000000000000
       ExplicitSize.cy = 8.000000000000000000
       object ToolBar1: TToolBar
-        Size.Width = 370.000000000000000000
+        Size.Width = 390.000000000000000000
         Size.Height = 40.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 4
         object LblNomePais: TLabel
           Align = Contents
-          Size.Width = 370.000000000000000000
+          Size.Width = 390.000000000000000000
           Size.Height = 40.000000000000000000
           Size.PlatformDefault = False
           StyleLookup = 'toollabel'
@@ -86,37 +79,44 @@ object FramePaises: TFramePaises
           Margins.Left = 3.000000000000000000
           Margins.Top = 3.000000000000000000
           Margins.Bottom = 3.000000000000000000
-          Position.X = 304.000000000000000000
+          Position.X = 324.000000000000000000
           Position.Y = 3.000000000000000000
           Size.Width = 66.000000000000000000
           Size.Height = 34.000000000000000000
           Size.PlatformDefault = False
         end
-        object BtnVoltar: TSpeedButton
+        object Layout1: TLayout
           Align = Left
-          Size.Width = 36.000000000000000000
+          Size.Width = 50.000000000000000000
           Size.Height = 40.000000000000000000
           Size.PlatformDefault = False
-          StyleLookup = 'backtoolbutton'
-          OnClick = BtnVoltarClick
+          TabOrder = 1
+          object BtnVoltar: TSpeedButton
+            Align = Client
+            Size.Width = 50.000000000000000000
+            Size.Height = 40.000000000000000000
+            Size.PlatformDefault = False
+            StyleLookup = 'priortoolbutton'
+            OnClick = BtnVoltarClick
+          end
         end
       end
       object LstDadosPais: TListBox
         Align = Client
-        Size.Width = 370.000000000000000000
-        Size.Height = 597.000000000000000000
+        Size.Width = 390.000000000000000000
+        Size.Height = 607.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 0
         DisableFocusEffect = True
         DefaultItemStyles.ItemStyle = ''
         DefaultItemStyles.GroupHeaderStyle = ''
         DefaultItemStyles.GroupFooterStyle = ''
-        Viewport.Width = 366.000000000000000000
-        Viewport.Height = 593.000000000000000000
+        Viewport.Width = 390.000000000000000000
+        Viewport.Height = 607.000000000000000000
         object ListBoxItem12: TListBoxItem
           TextSettings.Font.StyleExt = {00070000000000000004000000}
           StyledSettings = [Family, Size, FontColor, Other]
-          Size.Width = 366.000000000000000000
+          Size.Width = 386.000000000000000000
           Size.Height = 40.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 15
@@ -130,7 +130,7 @@ object FramePaises: TFramePaises
             Margins.Top = 3.000000000000000000
             Margins.Right = 3.000000000000000000
             Margins.Bottom = 3.000000000000000000
-            Position.X = 243.000000000000000000
+            Position.X = 263.000000000000000000
             Position.Y = 3.000000000000000000
             Size.Width = 120.000000000000000000
             Size.Height = 34.000000000000000000
@@ -148,7 +148,7 @@ object FramePaises: TFramePaises
         end
         object ListBoxItem6: TListBoxItem
           Position.Y = 59.000000000000000000
-          Size.Width = 366.000000000000000000
+          Size.Width = 386.000000000000000000
           Size.Height = 32.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 5
@@ -161,7 +161,7 @@ object FramePaises: TFramePaises
             Margins.Top = 3.000000000000000000
             Margins.Right = 3.000000000000000000
             Margins.Bottom = 3.000000000000000000
-            Position.X = 243.000000000000000000
+            Position.X = 263.000000000000000000
             Position.Y = 3.000000000000000000
             Size.Width = 120.000000000000000000
             Size.Height = 26.000000000000000000
@@ -173,7 +173,7 @@ object FramePaises: TFramePaises
         end
         object ListBoxItem7: TListBoxItem
           Position.Y = 91.000000000000000000
-          Size.Width = 366.000000000000000000
+          Size.Width = 386.000000000000000000
           Size.Height = 32.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 6
@@ -186,7 +186,7 @@ object FramePaises: TFramePaises
             Margins.Top = 3.000000000000000000
             Margins.Right = 3.000000000000000000
             Margins.Bottom = 3.000000000000000000
-            Position.X = 243.000000000000000000
+            Position.X = 263.000000000000000000
             Position.Y = 3.000000000000000000
             Size.Width = 120.000000000000000000
             Size.Height = 26.000000000000000000
@@ -198,7 +198,7 @@ object FramePaises: TFramePaises
         end
         object ListBoxItem5: TListBoxItem
           Position.Y = 123.000000000000000000
-          Size.Width = 366.000000000000000000
+          Size.Width = 386.000000000000000000
           Size.Height = 32.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 4
@@ -211,7 +211,7 @@ object FramePaises: TFramePaises
             Margins.Top = 3.000000000000000000
             Margins.Right = 3.000000000000000000
             Margins.Bottom = 3.000000000000000000
-            Position.X = 243.000000000000000000
+            Position.X = 263.000000000000000000
             Position.Y = 3.000000000000000000
             Size.Width = 120.000000000000000000
             Size.Height = 26.000000000000000000
@@ -228,7 +228,7 @@ object FramePaises: TFramePaises
         end
         object ListBoxItem1: TListBoxItem
           Position.Y = 174.000000000000000000
-          Size.Width = 366.000000000000000000
+          Size.Width = 386.000000000000000000
           Size.Height = 32.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 0
@@ -241,7 +241,7 @@ object FramePaises: TFramePaises
             Margins.Top = 3.000000000000000000
             Margins.Right = 3.000000000000000000
             Margins.Bottom = 3.000000000000000000
-            Position.X = 243.000000000000000000
+            Position.X = 263.000000000000000000
             Position.Y = 3.000000000000000000
             Size.Width = 120.000000000000000000
             Size.Height = 26.000000000000000000
@@ -253,7 +253,7 @@ object FramePaises: TFramePaises
         end
         object ListBoxItem2: TListBoxItem
           Position.Y = 206.000000000000000000
-          Size.Width = 366.000000000000000000
+          Size.Width = 386.000000000000000000
           Size.Height = 32.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 1
@@ -266,7 +266,7 @@ object FramePaises: TFramePaises
             Margins.Top = 3.000000000000000000
             Margins.Right = 3.000000000000000000
             Margins.Bottom = 3.000000000000000000
-            Position.X = 243.000000000000000000
+            Position.X = 263.000000000000000000
             Position.Y = 3.000000000000000000
             Size.Width = 120.000000000000000000
             Size.Height = 26.000000000000000000
@@ -278,7 +278,7 @@ object FramePaises: TFramePaises
         end
         object ListBoxItem8: TListBoxItem
           Position.Y = 238.000000000000000000
-          Size.Width = 366.000000000000000000
+          Size.Width = 386.000000000000000000
           Size.Height = 32.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 7
@@ -291,7 +291,7 @@ object FramePaises: TFramePaises
             Margins.Top = 3.000000000000000000
             Margins.Right = 3.000000000000000000
             Margins.Bottom = 3.000000000000000000
-            Position.X = 243.000000000000000000
+            Position.X = 263.000000000000000000
             Position.Y = 3.000000000000000000
             Size.Width = 120.000000000000000000
             Size.Height = 26.000000000000000000
@@ -308,7 +308,7 @@ object FramePaises: TFramePaises
         end
         object ListBoxItem3: TListBoxItem
           Position.Y = 289.000000000000000000
-          Size.Width = 366.000000000000000000
+          Size.Width = 386.000000000000000000
           Size.Height = 32.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 2
@@ -321,7 +321,7 @@ object FramePaises: TFramePaises
             Margins.Top = 3.000000000000000000
             Margins.Right = 3.000000000000000000
             Margins.Bottom = 3.000000000000000000
-            Position.X = 243.000000000000000000
+            Position.X = 263.000000000000000000
             Position.Y = 3.000000000000000000
             Size.Width = 120.000000000000000000
             Size.Height = 26.000000000000000000
@@ -333,7 +333,7 @@ object FramePaises: TFramePaises
         end
         object ListBoxItem4: TListBoxItem
           Position.Y = 321.000000000000000000
-          Size.Width = 366.000000000000000000
+          Size.Width = 386.000000000000000000
           Size.Height = 32.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 3
@@ -346,7 +346,7 @@ object FramePaises: TFramePaises
             Margins.Top = 3.000000000000000000
             Margins.Right = 3.000000000000000000
             Margins.Bottom = 3.000000000000000000
-            Position.X = 243.000000000000000000
+            Position.X = 263.000000000000000000
             Position.Y = 3.000000000000000000
             Size.Width = 120.000000000000000000
             Size.Height = 26.000000000000000000
@@ -358,7 +358,7 @@ object FramePaises: TFramePaises
         end
         object ListBoxItem9: TListBoxItem
           Position.Y = 353.000000000000000000
-          Size.Width = 366.000000000000000000
+          Size.Width = 386.000000000000000000
           Size.Height = 32.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 8
@@ -371,7 +371,7 @@ object FramePaises: TFramePaises
             Margins.Top = 3.000000000000000000
             Margins.Right = 3.000000000000000000
             Margins.Bottom = 3.000000000000000000
-            Position.X = 243.000000000000000000
+            Position.X = 263.000000000000000000
             Position.Y = 3.000000000000000000
             Size.Width = 120.000000000000000000
             Size.Height = 26.000000000000000000
@@ -388,7 +388,7 @@ object FramePaises: TFramePaises
         end
         object ListBoxItem10: TListBoxItem
           Position.Y = 404.000000000000000000
-          Size.Width = 366.000000000000000000
+          Size.Width = 386.000000000000000000
           Size.Height = 32.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 10
@@ -401,7 +401,7 @@ object FramePaises: TFramePaises
             Margins.Top = 3.000000000000000000
             Margins.Right = 3.000000000000000000
             Margins.Bottom = 3.000000000000000000
-            Position.X = 243.000000000000000000
+            Position.X = 263.000000000000000000
             Position.Y = 3.000000000000000000
             Size.Width = 120.000000000000000000
             Size.Height = 26.000000000000000000
@@ -413,7 +413,7 @@ object FramePaises: TFramePaises
         end
         object ListBoxItem11: TListBoxItem
           Position.Y = 436.000000000000000000
-          Size.Width = 366.000000000000000000
+          Size.Width = 386.000000000000000000
           Size.Height = 32.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 11
@@ -426,7 +426,7 @@ object FramePaises: TFramePaises
             Margins.Top = 3.000000000000000000
             Margins.Right = 3.000000000000000000
             Margins.Bottom = 3.000000000000000000
-            Position.X = 243.000000000000000000
+            Position.X = 263.000000000000000000
             Position.Y = 3.000000000000000000
             Size.Width = 120.000000000000000000
             Size.Height = 26.000000000000000000

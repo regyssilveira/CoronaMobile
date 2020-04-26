@@ -1,37 +1,37 @@
 object DtmPrincipal: TDtmPrincipal
   OldCreateOrder = False
-  Height = 443
-  Width = 724
+  Height = 385
+  Width = 389
   object RESTCli: TRESTClient
     Accept = 'application/json, text/plain; q=0.9, text/html;q=0.8,'
     AcceptCharset = 'utf-8, *;q=0.8'
     BaseURL = 'https://corona.lmao.ninja/v2'
     Params = <>
     Left = 80
-    Top = 35
+    Top = 55
   end
   object ReqResumo: TRESTRequest
     Client = RESTCli
     Params = <>
     Resource = 'all'
-    Response = RESTResp
+    Response = RespResumo
     SynchronizedEvents = False
     Left = 80
-    Top = 95
+    Top = 115
   end
   object ReqPaises: TRESTRequest
     Client = RESTCli
     Params = <>
     Resource = 'countries'
-    Response = RESTResp
+    Response = RespPaises
     SynchronizedEvents = False
     Left = 170
-    Top = 95
+    Top = 115
   end
-  object RESTResp: TRESTResponse
+  object RespResumo: TRESTResponse
     ContentType = 'application/json'
     Left = 80
-    Top = 160
+    Top = 165
   end
   object ReqPais: TRESTRequest
     Client = RESTCli
@@ -43,10 +43,10 @@ object DtmPrincipal: TDtmPrincipal
         Value = 'brazil'
       end>
     Resource = 'countries/{pais}'
-    Response = RESTResp
+    Response = RespPais
     SynchronizedEvents = False
     Left = 260
-    Top = 95
+    Top = 115
   end
   object TbResumo: TFDMemTable
     FieldDefs = <>
@@ -59,8 +59,8 @@ object DtmPrincipal: TDtmPrincipal
     UpdateOptions.CheckRequired = False
     UpdateOptions.AutoCommitUpdates = True
     StoreDefs = True
-    Left = 75
-    Top = 350
+    Left = 80
+    Top = 265
     object TbResumoupdated: TWideStringField
       FieldName = 'updated'
       Size = 255
@@ -117,25 +117,25 @@ object DtmPrincipal: TDtmPrincipal
   object DtsAdpResumo: TRESTResponseDataSetAdapter
     Dataset = TbResumo
     FieldDefs = <>
-    Response = RESTResp
-    Left = 75
-    Top = 300
+    Response = RespResumo
+    Left = 80
+    Top = 215
   end
   object DtsAdpPaises: TRESTResponseDataSetAdapter
     Dataset = TbPaises
     FieldDefs = <>
-    Response = RESTResp
+    Response = RespPaises
     NestedElements = True
-    Left = 185
-    Top = 300
+    Left = 170
+    Top = 215
   end
   object DtsAdpPais: TRESTResponseDataSetAdapter
     Dataset = TbPais
     FieldDefs = <>
-    Response = RESTResp
+    Response = RespPais
     NestedElements = True
-    Left = 295
-    Top = 300
+    Left = 260
+    Top = 215
   end
   object TbPaises: TFDMemTable
     FieldDefs = <>
@@ -148,8 +148,8 @@ object DtmPrincipal: TDtmPrincipal
     UpdateOptions.CheckRequired = False
     UpdateOptions.AutoCommitUpdates = True
     StoreDefs = True
-    Left = 185
-    Top = 350
+    Left = 170
+    Top = 265
     object TbPaisesupdated: TWideStringField
       FieldName = 'updated'
       Size = 255
@@ -246,8 +246,8 @@ object DtmPrincipal: TDtmPrincipal
     UpdateOptions.CheckRequired = False
     UpdateOptions.AutoCommitUpdates = True
     StoreDefs = True
-    Left = 295
-    Top = 350
+    Left = 260
+    Top = 265
     object TbPaisupdated: TWideStringField
       FieldName = 'updated'
       Size = 255
@@ -332,5 +332,15 @@ object DtmPrincipal: TDtmPrincipal
       FieldName = 'continent'
       Size = 255
     end
+  end
+  object RespPaises: TRESTResponse
+    ContentType = 'application/json'
+    Left = 170
+    Top = 165
+  end
+  object RespPais: TRESTResponse
+    ContentType = 'application/json'
+    Left = 260
+    Top = 165
   end
 end
