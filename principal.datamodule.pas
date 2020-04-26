@@ -14,7 +14,7 @@ type
     RESTCli: TRESTClient;
     ReqResumo: TRESTRequest;
     ReqPaises: TRESTRequest;
-    RESTResp: TRESTResponse;
+    RespResumo: TRESTResponse;
     ReqPais: TRESTRequest;
     TbResumo: TFDMemTable;
     DtsAdpResumo: TRESTResponseDataSetAdapter;
@@ -77,6 +77,8 @@ type
     TbPaistests: TWideStringField;
     TbPaistestsPerOneMillion: TWideStringField;
     TbPaiscontinent: TWideStringField;
+    RespPaises: TRESTResponse;
+    RespPais: TRESTResponse;
   private
 
   public
@@ -108,21 +110,24 @@ end;
 
 procedure TDtmPrincipal.AtualizarResumo;
 begin
+  TbResumo.Close;
+
   FrmPrincipal.FrameSobre1.Mostrar(TSobreModo.modSplash, 'Atualizando dados gerais...');
   ReqResumo.ExecuteAsync(
     procedure
     begin
-      if RESTResp.Status.Success then
+      if RespResumo.Status.Success then
       begin
+        // forçar atualização do dataset
         DtsAdpResumo.Active := True;
-        FrmPrincipal.FrameMundo1.Preencher(TbResumo)
+        FrmPrincipal.FrameMundo1.Preencher(TbResumo);
       end
       else
       begin
         FrmPrincipal.FrameSobre1.Fechar;
         ShowMessage(
-          'Ocorreu um erro ao atualizar os dados:' + sLineBreak +
-          RESTResp.StatusCode.ToString + ' - ' + RESTResp.StatusText
+          'Ocorreu um erro ao acessar o webservice de resumo:' + sLineBreak +
+          RespResumo.StatusCode.ToString + ' - ' + RespResumo.StatusText
         );
       end;
     end,
@@ -134,7 +139,7 @@ begin
       if Assigned(AObject) and (AObject is Exception) then
       begin
         ShowMessage(
-          'Ocorreu um erro ao atualizar os dados:' + sLineBreak +
+          'Ocorreu um erro ao atualizar os dados de resumo:' + sLineBreak +
           Exception(AObject).Message
         );
       end;
@@ -144,16 +149,23 @@ end;
 
 procedure TDtmPrincipal.AtualizarPaises;
 begin
+  TbPaises.Close;
+
   FrmPrincipal.FrameSobre1.Mostrar(TSobreModo.modSplash, 'Efetuando download dos dados de países...');
   ReqPaises.ExecuteAsync(
     procedure
     begin
       FrmPrincipal.FrameSobre1.Fechar;
-      if not RESTResp.Status.Success then
+      if RespPaises.Status.Success then
+      begin
+        // forçar atualização do dataset
+        DtsAdpPaises.Active := True;
+      end
+      else
       begin
         ShowMessage(
-          'Ocorreu um erro ao atualizar os dados de países:' + sLineBreak +
-          RESTResp.StatusCode.ToString + ' - ' + RESTResp.StatusText
+          'Ocorreu um erro ao acessar o webservice de países:' + sLineBreak +
+          RespPaises.StatusCode.ToString + ' - ' + RespPaises.StatusText
         );
       end;
     end,

@@ -40,7 +40,7 @@ var
 implementation
 
 uses
-  principal.datamodule;
+  principal.datamodule, helper.frame;
 
 {$R *.fmx}
 
