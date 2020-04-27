@@ -33,10 +33,12 @@ type
     Layout3: TLayout;
     Image2: TImage;
     LblSelphi: TLabel;
+    Rectangle2: TRectangle;
     procedure BtnVoltarClick(Sender: TObject);
     procedure RecMsg1Click(Sender: TObject);
     procedure RecMsg2Click(Sender: TObject);
     procedure RecMsg3Click(Sender: TObject);
+    procedure Rectangle2Click(Sender: TObject);
   private
     FMensagem: string;
     FModo: TSobreModo;
@@ -93,17 +95,22 @@ end;
 
 procedure TFrameSobre.RecMsg1Click(Sender: TObject);
 begin
-  OpenURL('https://corona.lmao.ninja/');
+  OpenURL('https://corona.lmao.ninja');
 end;
 
 procedure TFrameSobre.RecMsg2Click(Sender: TObject);
 begin
-  OpenURL('https://corona.lmao.ninja/docs/');
+  OpenURL('https://corona.lmao.ninja/docs');
 end;
 
 procedure TFrameSobre.RecMsg3Click(Sender: TObject);
 begin
-  OpenURL('https://www.worldometers.info/coronavirus/');
+  OpenURL('https://www.worldometers.info/coronavirus');
+end;
+
+procedure TFrameSobre.Rectangle2Click(Sender: TObject);
+begin
+  OpenURL('https://regys.com.br');
 end;
 
 procedure TFrameSobre.BtnVoltarClick(Sender: TObject);

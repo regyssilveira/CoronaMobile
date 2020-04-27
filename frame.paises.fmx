@@ -85,34 +85,19 @@ object FramePaises: TFramePaises
           Size.Height = 34.000000000000000000
           Size.PlatformDefault = False
         end
-        object Layout1: TLayout
-          Align = Left
-          Size.Width = 50.000000000000000000
-          Size.Height = 40.000000000000000000
-          Size.PlatformDefault = False
-          TabOrder = 1
-          object BtnVoltar: TSpeedButton
-            Align = Client
-            Size.Width = 50.000000000000000000
-            Size.Height = 40.000000000000000000
-            Size.PlatformDefault = False
-            StyleLookup = 'priortoolbutton'
-            OnClick = BtnVoltarClick
-          end
-        end
       end
       object LstDadosPais: TListBox
         Align = Client
         Size.Width = 390.000000000000000000
-        Size.Height = 607.000000000000000000
+        Size.Height = 555.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 0
         DisableFocusEffect = True
         DefaultItemStyles.ItemStyle = ''
         DefaultItemStyles.GroupHeaderStyle = ''
         DefaultItemStyles.GroupFooterStyle = ''
-        Viewport.Width = 390.000000000000000000
-        Viewport.Height = 607.000000000000000000
+        Viewport.Width = 386.000000000000000000
+        Viewport.Height = 551.000000000000000000
         object ListBoxItem12: TListBoxItem
           TextSettings.Font.StyleExt = {00070000000000000004000000}
           StyledSettings = [Family, Size, FontColor, Other]
@@ -436,6 +421,20 @@ object FramePaises: TFramePaises
             TabOrder = 0
           end
         end
+      end
+      object BtnVoltar: TSpeedButton
+        Align = Bottom
+        Margins.Left = 5.000000000000000000
+        Margins.Top = 5.000000000000000000
+        Margins.Right = 5.000000000000000000
+        Margins.Bottom = 5.000000000000000000
+        Position.X = 5.000000000000000000
+        Position.Y = 600.000000000000000000
+        Size.Width = 380.000000000000000000
+        Size.Height = 42.000000000000000000
+        Size.PlatformDefault = False
+        Text = 'voltar'
+        OnClick = BtnVoltarClick
       end
     end
   end

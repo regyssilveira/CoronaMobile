@@ -4,7 +4,7 @@ interface
 
 // URLEncode is performed on the URL
 // so you need to format it   protocol://path
-function OpenURL(const URL: string; const DisplayError: Boolean = False): Boolean;
+procedure OpenURL(const URL: string; const DisplayError: Boolean = False);
 
 implementation
 
@@ -22,7 +22,7 @@ uses
   Winapi.ShellAPI, Winapi.Windows;
 {$ENDIF MSWINDOWS}
 
-function OpenURL(const URL: string; const DisplayError: Boolean = False): Boolean;
+procedure OpenURL(const URL: string; const DisplayError: Boolean = False);
 {$IFDEF ANDROID}
 var
   Intent: JIntent;
@@ -33,12 +33,11 @@ begin
     TJnet_Uri.JavaClass.parse(StringToJString(TIdURI.URLEncode(URL))));
   try
     TAndroidHelper.Activity.startActivity(Intent);
-    exit(true);
   except
     on e: Exception do
     begin
-      if DisplayError then ShowMessage('Error: ' + e.Message);
-      exit(false);
+      if DisplayError then
+        ShowMessage('Error: ' + e.Message);
     end;
   end;
 end;
@@ -55,7 +54,6 @@ begin
   begin
     if DisplayError then
       ShowMessage('Error: Opening "' + URL + '" not supported.');
-    exit(false);
   end;
 end;
 {$ENDIF IOS}

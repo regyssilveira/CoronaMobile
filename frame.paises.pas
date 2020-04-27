@@ -55,7 +55,6 @@ type
     ListBoxItem12: TListBoxItem;
     continent: TLabel;
     ImgBandeira: TImage;
-    Layout1: TLayout;
     BtnVoltar: TSpeedButton;
     procedure BtnVoltarClick(Sender: TObject);
     procedure LsvPaisesItemClick(const Sender: TObject;
