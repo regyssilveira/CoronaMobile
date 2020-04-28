@@ -63,6 +63,7 @@ type
 
   public
     procedure Inicializar;
+    procedure VoltarInicio;
   end;
 
 implementation
@@ -77,6 +78,12 @@ uses
 procedure TFramePaises.Inicializar;
 begin
   TbcPaises.TabIndex := 0;
+end;
+
+procedure TFramePaises.VoltarInicio;
+begin
+  ChangeTabAction1.Tab := TabPaises;
+  ChangeTabAction1.Execute;
 end;
 
 procedure TFramePaises.LsvPaisesItemClick(const Sender: TObject; const AItem: TListViewItem);
@@ -95,8 +102,7 @@ end;
 
 procedure TFramePaises.BtnVoltarClick(Sender: TObject);
 begin
-  ChangeTabAction1.Tab := TabPaises;
-  ChangeTabAction1.Execute;
+  Self.VoltarInicio;
 end;
 
 end.
